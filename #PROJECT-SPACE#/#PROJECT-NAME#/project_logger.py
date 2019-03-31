@@ -18,7 +18,7 @@ def setup_logger(log_file_path: str) -> None:
         },
         'handlers': {
             'console': {
-                'level': 'DEBUG',
+                'level': 'INFO',
                 'class': 'logging.StreamHandler',
                 'formatter': 'default'
             },
