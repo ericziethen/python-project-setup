@@ -8,3 +8,6 @@ mypy
 # Testing tools
 pytest
 pytest-cov
+
+# Profiling
+pyinstrument
