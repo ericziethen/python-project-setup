@@ -19,7 +19,9 @@ set datetimef=%Yr%.%Mon%.%Day%_%Hr%-%Min%-%Sec%
 
 !!! CONFIGURE SOURCE ROOT HERE !!!
 set SOURCE_ROOT=#PROJECT-NAME#
+echo ^!^!^! ERROR REPLACE '#PROJECT-NAME#' & goto exit_error
 set PYTHON_PROG=#PYTHON_PROG_NAME#
+echo ^!^!^! ERROR REPLACE '#PYTHON_PROG_NAME#' & goto exit_error
 
 pushd %SOURCE_ROOT%
 python -m pyinstrument "%PYTHON_PROG%" ..\test_files > ..\profiling\profile_%datetimef%.txt
