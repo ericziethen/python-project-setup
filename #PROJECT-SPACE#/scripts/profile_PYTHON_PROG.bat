@@ -21,11 +21,14 @@ set datetimef=%Yr%.%Mon%.%Day%_%Hr%-%Min%-%Sec%
 set SOURCE_ROOT=#PROJECT-NAME#
 echo ^!^!^! ERROR REPLACE '#PROJECT-NAME#' & goto exit_error
 set PYTHON_PROG=#PYTHON_PROG_NAME#
+set ARGS=
 echo ^!^!^! ERROR REPLACE '#PYTHON_PROG_NAME#' & goto exit_error
+set PROFILE_DIR=%PROJ_MAIN_DIR%\profiling
+if not exist "%PROFILE_DIR%" mkdir "%PROFILE_DIR%"
+set PROFILE_LOG=%PROFILE_DIR%\profile_%datetimef%.txt
 
-pushd %SOURCE_ROOT%
-python -m pyinstrument "%PYTHON_PROG%" ..\test_files > ..\profiling\profile_%datetimef%.txt
-popd
+echo Command: "python -m pyinstrument "%PYTHON_PROG%" > "%PROFILE_LOG%""
+python -m pyinstrument "%PYTHON_PROG%" %ARGS% > "%PROFILE_LOG%""
 
 :end
 
