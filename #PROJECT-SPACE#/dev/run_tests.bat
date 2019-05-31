@@ -2,26 +2,15 @@
 
 setlocal
 
-rem This selfwrapper calls itself again to avoid closing the command window when exiting
-IF "%selfWrapped%"=="" (
-  REM this is necessary so that we can use "exit" to terminate the batch file,
-  REM and all subroutines, but not the original cmd.exe
-  SET selfWrapped=true
-  %ComSpec% /s /c ""%~0" %*"
-  GOTO :EOF
-)
-
 set PROJ_MAIN_DIR=%~dp0..
-
-pushd %PROJ_MAIN_DIR%
-
 set PACKAGE_ROOT=#PROJECT-NAME#
-echo ^!^!^! ERROR REPLACE '#PROJECT-NAME#' & goto exit_error
 
 set PYTHONPATH=%PYTHONPATH%;%PACKAGE_ROOT%
 
-rem Test directories are specified in Pytest.ini
-pytest --cov=%PACKAGE_ROOT%
+rem Can use to overwrite pytest.ini
+rem set PYTEST_ADDOPTS=""
+
+pytest --rootdir="%PROJ_MAIN_DIR%" --cov="%PACKAGE_ROOT%"
 set return_code=%errorlevel%
 if %return_code% equ 0 (
     echo *** No Issues Found
@@ -39,11 +28,11 @@ rem http://blog.thedigitalcatonline.com/blog/2018/07/05/useful-pytest-command-li
 rem https://www.patricksoftwareblog.com/python-unit-testing-structuring-your-project/
 
 :exit_error
-popd
 endlocal
+echo exit /B 1
 exit /B 1
 
 :exit_ok
-popd
 endlocal
+echo exit /B 0
 exit /B 0

@@ -8,6 +8,11 @@ mypy
 # Testing tools
 pytest
 pytest-cov
+codecov
 
 # Profiling
 pyinstrument
+
+# Packaging
+twine
+wheel

@@ -1,4 +1,36 @@
 @echo off
 
-findstr /S "#PROJECT-NAME#" *.*
+call:find_str "#PROJECT-NAME#"
+call:find_str "#GITHUB-ACCOUNT#"
+call:find_str "#GITHUB-REPO#"
+call:find_str "#PYPI-NAME#"
+call:find_str "#PYPI-USERNAME#"
+call:find_str "#PYPI-EMAIL#"
+call:find_str "#PYPI-AUTHOR#"
+call:find_str "#TRAVIS-CI-ACCOUNT#"
+call:find_str "#TRAVIS-CI-NAME#"
+call:find_str "#CODECOV_ACCOUNT#"
+call:find_str "#CODECOV_NAME#"
+call:find_str "##"
+call:find_str "##"
+call:find_str "##"
+call:find_str "##"
+call:find_str ""
 
+goto end
+
+: #########################################
+: ##### START OF FUNCTION DEFINITIONS #####
+: #########################################
+:find_str
+set TEXT=%~1
+
+echo ### FINDING '%TEXT%' ###
+findstr /S "%TEXT%" *.*
+echo[
+goto:eof
+: #######################################
+: ##### END OF FUNCTION DEFINITIONS #####
+: #######################################
+
+:end
