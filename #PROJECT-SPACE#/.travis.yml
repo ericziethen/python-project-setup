@@ -14,39 +14,46 @@ branches:
 
 matrix:
   include:
-  - os: linux
+  - name: "Linux, Python 3.6"
+    os: linux
     dist: xenial
     python: "3.6"
-  - os: linux
+  - name: "Linux, Python 3.7.3"
+    os: linux
     dist: xenial
     python: "3.7.3"
     env: DEPLOY_ENABLED=True
-#  - os: windows
+#  - name: "Windows, Python 3.6.8 (x32)"
+#    os: windows
 #    language: sh
-#    python: "3.6.8 (x32)"
+#    python: "3.6.8"
 #    before_install: choco install python --version=3.6.8 --x86
 #    env: PATH=/c/Python36:/c/Python36/Scripts:$PATH
-#  - os: windows
+#  - name: "Windows, Python 3.6.8 (x64)"
+#    os: windows
 #    language: sh
-#    python: "3.6.8 (x64)"
+#    python: "3.6.8"
 #    before_install: choco install python --version=3.6.8
 #    env: PATH=/c/Python36:/c/Python36/Scripts:$PATH
-#  - os: windows
+#  - name: "Windows, Python 3.7.3 (x32)"
+#    os: windows
 #    language: sh
-#    python: "3.7.3 (x32)"
+#    python: "3.7.3"
 #    before_install: choco install python --version=3.7.3 --x86
 #    env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-  - os: windows
+  - name: "Windows, Python 3.7.3 (x64)"
+    os: windows
     language: sh
-    python: "3.7.3 (x64)"
+    python: "3.7.3"
     before_install: choco install python --version=3.7.3
     env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 install:
 - python --version --version
 - python -m pip install --upgrade pip setuptools wheel
-- pip install --upgrade -r Requirements/requirements-dev-for-release.txt
-- pip install --upgrade -r Requirements/requirements-dev-local.txt
+# don't use the '--upgrade' to not upgrade pinned requirements with generic ones
+- pip install -r Requirements/requirements-dev-for-release.txt
+- pip install -r Requirements/requirements-dev-local.txt
 
 # Capture some information
 - pip list
