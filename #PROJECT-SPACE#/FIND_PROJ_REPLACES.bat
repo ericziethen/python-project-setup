@@ -22,7 +22,7 @@ goto end
 set TEXT=%~1
 
 echo ### FINDING '%TEXT%' ###
-findstr /S "%TEXT%" *.*
+findstr /S "%TEXT%" *.* | findstr /V "%~n0"
 echo[
 goto:eof
 : #######################################
