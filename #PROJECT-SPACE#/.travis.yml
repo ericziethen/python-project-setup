@@ -54,6 +54,7 @@ install:
 # don't use the '--upgrade' to not upgrade pinned requirements with generic ones
 - pip install -r Requirements/requirements-dev-for-release.txt
 - pip install -r Requirements/requirements-dev-local.txt
+- pip install -r Requirements/requirements-dev-for-release-WITHOUT-DEPENDENCIES-UNPINNED.txt
 
 # Capture some information
 - pip list
@@ -71,7 +72,7 @@ before_script:
 script:
 # Run Tests
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then dev/run_tests.bat travis-ci; fi
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./dev/run_tests.sh; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./dev/run_tests.sh travis-ci; fi
 
 # Run Linting
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then dev/run_linters.bat; fi

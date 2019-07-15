@@ -11,5 +11,8 @@ git config merge.ff no
 git config pull.ff only
 
 rem Alwaysh Push Annotated Tags
-git config --global push.followTags true
+git config push.followTags true
+
+rem set diff3 as default diff view
+git config merge.conflictstyle diff3
 

@@ -11,9 +11,15 @@ rem To see how to loop through multiple Command Line Arguments: https://www.robv
 
 rem Disable Unwanted tests when run from Travis
 if "%1"=="travis-ci" (
-    set PYTEST_ADDOPTS=-m "(not requests_html)"
+    rem add testing exclusions for travis
+    rem set PYTEST_ADDOPTS=-m "(not ???)"
+    echo Argument "travis-ci" passed, set "PYTEST_ADDOPTS" env variable
+    goto run_tests
 )
 
+:local_setup
+
+:run_tests
 pytest --rootdir="%PROJ_MAIN_DIR%" --cov="%PACKAGE_ROOT%"
 set return_code=%errorlevel%
 if %return_code% equ 0 (
