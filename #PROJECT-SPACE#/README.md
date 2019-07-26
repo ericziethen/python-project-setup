@@ -1,3 +1,6 @@
+# RUN "FIND_PROJ_REPLACES.bat" to find settings that need replacing
+
+
 <table>
     <tr>
         <td>License</td>
