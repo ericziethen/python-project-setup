@@ -7,9 +7,7 @@
     "editor.tabSize": 4,
 
     "[python]": {
-        "editor.rulers": [
-            79,
-        ]
+        "editor.rulers": [79, 120]
     },
     "editor.renderWhitespace": "all",
 
@@ -17,8 +15,8 @@
 
     "python.linting.pylintEnabled": true,
 
-    "python.linting.pep8Enabled": true,
-    "python.linting.pep8Path": "pycodestyle",
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pycodestylePath": "pycodestyle",
 
     "python.linting.pydocstyleEnabled": true,
 

@@ -7,7 +7,9 @@ set PROJ_MAIN_DIR=%BATCH_DIR%..\..
 set MODULE_PATH=%PROJ_MAIN_DIR%\#PROJECT-NAME#
 echo ^!^!^! ERROR REPLACE '#PROJECT-NAME#' & goto exit_error
 
-bandit -r "%MODULE_PATH%"
+pushd "%PROJ_MAIN_DIR%"
+rem Exclusion via config file currently not working in bandit 1.6.2
+bandit -r "%MODULE_PATH%" --exclude "ozpricechecker/tests/,ozpricechecker/pricefinderapp/tests/"
 set return_code=%errorlevel%
 if %return_code% equ 0 (
     echo *** No Issues Found
@@ -18,9 +20,11 @@ if %return_code% equ 0 (
 )
 
 :exit_error
+popd
 endlocal
 exit /B 1
 
 :exit_ok
+popd
 endlocal
 exit /B 0
