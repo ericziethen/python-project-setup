@@ -13,6 +13,7 @@ call:find_str "#TRAVIS-CI-ACCOUNT#"
 call:find_str "#TRAVIS-CI-NAME#"
 call:find_str "#CODECOV_ACCOUNT#"
 call:find_str "#CODECOV_NAME#"
+call:find_str "ERROR REPLACE"
 
 goto end
 
