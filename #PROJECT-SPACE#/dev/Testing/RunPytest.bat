@@ -3,7 +3,7 @@
 setlocal
 
 set PROJ_MAIN_DIR=%~dp0../..
-set PACKAGE_ROOT=ozpricechecker
+set PACKAGE_ROOT=#PROJECT-NAME#
 
 set PYTHONPATH=%PYTHONPATH%;%PACKAGE_ROOT%
 pushd "%PROJ_MAIN_DIR%"
