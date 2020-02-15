@@ -25,6 +25,11 @@ set TEXT=%~1
 echo ### FINDING '%TEXT%' ###
 findstr /S "%TEXT%" *.* | findstr /V "%~n0"
 echo[
+
+echo ### FINDING FILES AND FOLDERS '*%TEXT%*' ###
+dir /s/b "*%TEXT%*"
+echo[
+
 goto:eof
 : #######################################
 : ##### END OF FUNCTION DEFINITIONS #####
