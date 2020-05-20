@@ -7,7 +7,7 @@ run_pylint () {
     local lint_path=$1
 
     echo "### PYLINT START - '$lint_path' ###"
-    pylint --load-plugins pylint_django "$lint_path"
+    pylint "$lint_path"
     local return_code=$?
 
     if [[ $return_code -eq  0 ]];
@@ -24,7 +24,7 @@ run_pylint () {
 ##### END OF FUNCTION DEFINITIONS #####
 #######################################
 
-MODULE_NAME=ozpricechecker
+MODULE_NAME=#PROJECT-NAME#
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 PROJ_MAIN_DIR=$SCRIPT_PATH/../..
 MODULE_PATH=$PROJ_MAIN_DIR/$MODULE_NAME

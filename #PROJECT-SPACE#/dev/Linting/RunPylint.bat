@@ -34,7 +34,7 @@ exit /B 0
 set LINT_PATH=%~1
 
 echo ### PYLINT START - '%LINT_PATH%' ###
-pylint --load-plugins pylint_django "%LINT_PATH%"
+pylint "%LINT_PATH%"
 set return_code=%errorlevel%
 if %return_code% gtr 0 (
     set ERROR_FOUND=TRUE
