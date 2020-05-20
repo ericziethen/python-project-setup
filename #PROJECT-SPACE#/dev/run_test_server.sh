@@ -9,10 +9,10 @@ pushd "$TEST_SERVER_DIR"
 
 if [ "$1" != "" ]; then
     echo "Argument Found, run detached"
-    python -m http.server --bind localhost 8000 &
+    python -m http.server --bind 127.0.0.1 8080 &
 else
     echo "No Argument Found, run attached"
-    python -m http.server --bind localhost 8000
+    python -m http.server --bind 127.0.0.1 8080
 fi
 
 popd
