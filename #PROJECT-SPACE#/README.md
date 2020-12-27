@@ -9,6 +9,8 @@
         <td><img src='https://img.shields.io/pypi/v/#PYPI-NAME#.svg'></td>
     </tr>
     <tr>
+        <td>Github Action</td>
+        <td><img src='https://github.com/#GITHUB-ACCOUNT#/#GITHUB-REPO#/workflows/CI/badge.svg'></td>
         <td>Travis CI</td>
         <td><img src='https://travis-ci.org/#TRAVIS-CI-ACCOUNT#/#TRAVIS-CI-NAME#.svg?branch=master'></td>
         <td>Coverage</td>
